@@ -6,6 +6,7 @@ const {
 const getBuildConfig = () => {
   const path = require('path')
   const postcssPresetEnv = require('postcss-preset-env')
+  require('dotenv').config
   const postcssPresetEnvOptions = {
     features: {
       'custom-media-queries': true,
@@ -44,6 +45,10 @@ const getBuildConfig = () => {
         ],
       })
       return config
+    },
+    env: {
+      NOTION_ACCESS_TOKEN: process.env.NOTION_ACCESS_TOKEN,
+      NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID,
     },
   }
   return nextConfig
